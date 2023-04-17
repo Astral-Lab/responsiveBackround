@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Lilita+One&display=swap');
+
+    body {
+    background: black;
+    color: white;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;;
+    align-items: center;
+    font-family: 'Lilita One', cursive;
+    overflow: hidden;
+    }
+
+    .container {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    transform-origin: top center;
+    position: absolute;
+    top: 0;
+    }
+
+    .containerRow {
+    display: flex;
+    gap: 1em;
+    }
+
+    .background {
+    font-size: 2rem;
+    opacity: 0.2;
+    font-style: italic;
+    }
+
+    .hidden {
+    visibility: hidden;
+    position: absolute;
+    }
+</style>
+<body>
+    <div class="container">
+    </div>
+    <div class="background hidden">ipeesitting69</div>
+    <script>
+        const windowWidth = window.innerWidth;
+        const windowHeight = window.innerHeight;
+        const word = "ipeesitting69";
+        const backgroundWidth = document.querySelector('.background').getBoundingClientRect().width;
+        const backgroundHeight = document.querySelector('.background').getBoundingClientRect().height;
+        const columns = Math.ceil(windowWidth / backgroundWidth);
+        const rows = Math.ceil(windowHeight / backgroundHeight);
+
+        const insertBackground = () => {
+        const root = document.querySelector('.container');
+        for(let i = 0; i < rows; i++) {
+            const containerRow = document.createElement('div');
+            containerRow.classList.add("containerRow");
+            for(let j = 0; j < columns; j++) {
+            const backgroundDiv = document.createElement('div');
+            backgroundDiv.classList.add('background');
+            backgroundDiv.innerText = word;
+            containerRow.appendChild(backgroundDiv);
+            }
+            root.appendChild(containerRow);
+        }
+        
+        console.log('resize triggered!')
+        }
+
+        insertBackground()
+        //window.addEventListener('resize', insertBackground);
+    </script>
+</body>
+</html>
